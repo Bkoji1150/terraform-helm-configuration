@@ -1,0 +1,3 @@
+name,repository_name,replicas,label
+deploy-test,iaas-example-a,3,aws-enhance
+deploy-prod,iaas-orchestration,6,aws-enhance

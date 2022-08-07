@@ -12,12 +12,6 @@ jobs:
   terraform:
     name: 'build'
     runs-on: [self-hosted, linux]
-    strategy:
-      max-parallel: 1
-      matrix:
-         include:
-           - environment: sbx
-             runner: ubuntu-latest
 
     env:
          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

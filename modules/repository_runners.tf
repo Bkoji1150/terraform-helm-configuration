@@ -14,7 +14,7 @@ spec:
   replicas: ${each.value.replicas}
   template:
     spec:
-      repository: Travelport-Enterprise/${each.value.repository_name}
+      repository: Kojitechs-101/${each.value.repository_name}
       labels:
         - ${each.value.label} 
 ---        
@@ -50,4 +50,4 @@ spec:
 YAML
 
   depends_on = [helm_release.github_runner, kubectl_manifest.github_oragnization_runners]
-} 
+}

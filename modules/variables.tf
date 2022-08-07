@@ -116,5 +116,5 @@ variable "cert_namespace" {
 
 variable "organization" {
   type    = string
-  default = "Travelport-Enterprise"
+  default = "Kojitechs-101"
 }

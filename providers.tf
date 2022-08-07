@@ -1,11 +1,12 @@
-
 terraform {
+  required_version = ">=1.1.5"
 
   backend "s3" {
-    bucket         = "non-prod-nggf-terraform-state-us-east-1-179630400142"
-    key            = "lab/awsuse1/helmdeployk8s/enhancement/gheorchestration.tfstate"
+    bucket         = "kojitechs.aws.eks.with.terraform.tf"
+    dynamodb_table = "terraform-lock"
+    key            = "helmconfiguration/path/env"
     region         = "us-east-1"
-    dynamodb_table = "lab-awsuse1-tflocks"
+    encrypt        = "true"
   }
   required_providers {
     aws = {
@@ -16,8 +17,11 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = var.aws_region
   assume_role {
-    role_arn = "arn:aws:iam::179630400142:role/travelport-AWSManagedServicesDevelopmentRole"
+    role_arn = "arn:aws:iam::${lookup(var.aws_account_id, terraform.workspace)}:role/Role_For-S3_Creation"
+  }
+  default_tags {
+    tags = module.required_tags.aws_default_tags
   }
 }

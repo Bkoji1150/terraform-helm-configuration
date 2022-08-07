@@ -2,13 +2,20 @@
 variable "state_bucket" {
   type        = string
   description = "target state bucket to deploy action runners"
-  default     = "non-prod-nggf-terraform-state-us-east-1-179630400142"
+  default     = "kojitechs.aws.eks.with.terraform.tf"
 }
+
+variable "aws_account_id" {
+  description = "Environment this template would be deployed to"
+  type        = map(string)
+  default     = {}
+}
+
 
 variable "state_bucket_key" {
   type        = string
   description = "target state bucket to deploy"
-  default     = "lab/awsuse1/ghfargetprofile/gheorchestration.tfstate"
+  default     = "env:/shared/path/env"
 }
 
 variable "github_token" {

@@ -47,6 +47,11 @@ github_repositories = [
 ]
 
 ```
+
+```csv
+ name,replicas,label,group
+ runner-name,1,lable-name,group-name
+```
 ## Steps to set & assume aws role
 ```bash
 export AWS_ACCESS_KEY_ID=

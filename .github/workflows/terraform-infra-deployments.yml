@@ -11,7 +11,7 @@ on:
 jobs:
   terraform:
     name: 'build'
-    runs-on:  'self-hosted'
+    runs-on: [self-hosted, linux]
     strategy:
       max-parallel: 1
       matrix:

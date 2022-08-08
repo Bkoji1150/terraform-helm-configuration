@@ -1,4 +1,4 @@
-name: "Terraform Deployment "
+name: "Terraform APPLY Deloyment"
 
 on:
   workflow_dispatch:
@@ -7,11 +7,15 @@ on:
         description: 'AWS REGION'
         required: true 
         default: 'us-east-1'
+      env:
+        description: 'provide environment to deploy to'
+        required: true 
+        default: 'sbx'
 
 jobs:
   terraform:
     name: 'build'
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted, aws-eks-prod]
 
     env:
          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -20,10 +24,15 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Install Terraform
-      uses: little-core-labs/install-terraform@v2.0.0
-      with:
-          version: 1.1.5
-          args: '-var-file="prod.tfvars"'
+      run: |
+        sudo apt install wget unzip
+        TER_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
+        wget https://releases.hashicorp.com/terraform/${TER_VER}/terraform_${TER_VER}_linux_amd64.zip
+        unzip terraform_${TER_VER}_linux_amd64.zip
+        sudo mv terraform /usr/local/bin/
+        terraform --version
+        ls -al && pwd
+
     - name: Terraform fmt
       id: fmt
       run: terraform fmt -check
@@ -38,26 +47,19 @@ jobs:
     - name: Terraform Create Workspace
       id: Workspaces
       run: |
-        terraform workspace new ${{ matrix.environment }} || terraform workspace select ${{ matrix.environment }}
+        terraform workspace new ${{ github.event.inputs.env }} || terraform workspace select ${{ github.event.inputs.env }}
       continue-on-error: true   
 
     - name: Terraform Plan
       id: plan
       run: |
-        terraform plan -var-file="${{ matrix.environment }}.tfvars"  -out="plan.${{ matrix.environment }}" -no-color -var "github_token=${{secrets.GIT_SECRETS}}"
+        terraform plan -var-file="${{ github.event.inputs.env }}.tfvars"  -out="plan.${{ github.event.inputs.env }}" -no-color 
       continue-on-error: true  
 
-    - name: Terraform Destroy
-      if: github.ref == 'refs/heads/master'
-      id: Destroy
+    - name: Terraform Apply
+      id: Apply
       run: |
-        terraform destroy -var-file="${{ matrix.environment }}.tfvars" -var "github_token=${{secrets.GIT_SECRETS}}"  -auto-approve
-
-    # - name: Terraform Apply
-    #   if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-    #   id: Apply
-    #   run: |
-    #     terraform apply "plan.${{ matrix.environment }}"    
+        terraform apply "plan.${{ github.event.inputs.env }}"
 
   comment:
     runs-on: ubuntu-latest

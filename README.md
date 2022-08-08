@@ -58,11 +58,11 @@ export AWS_ACCESS_KEY_ID=
 export AWS_SECRET_ACCESS_KEY=
 export AWS_SESSION_TOKEN=
 aws sts get-caller-identity
-aws sts assume-role --role-arn "arn:aws:iam::179630400142:role/travelport-AWSManagedServicesDevelopmentRole" --role-session-name kubectl-Session
+aws sts assume-role --role-arn arn:aws:iam::181437319056:role/Role_For-S3_Creation --role-session-name kubectl-Session
 export AWS_ACCESS_KEY_ID=
 export AWS_SECRET_ACCESS_KEY=
 export AWS_SESSION_TOKEN=
-aws eks --region us-east-1 update-kubeconfig --name helmdeploymentghrunners
+aws eks --region us-east-1 update-kubeconfig --name Kojitechs_aws_eks_cluster
 aws sts get-caller-identity
 ```
 ## kubectl commands

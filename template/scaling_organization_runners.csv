@@ -1,2 +1,3 @@
 name,minreplicas,maxreplicas
-kojitechs-teraform-101,2,10
+aws-eks-orgs-runners-test,2,10
+aws-eks-orgs-runner-prod,3,10

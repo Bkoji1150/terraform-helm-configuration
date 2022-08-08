@@ -1,3 +1,3 @@
-name,replicas,label,group
-aws-eks-farget-runner-test,1,aws-eks,AWS-EKS-Group-test
-aws-eks-farget-runner-prod,1,aws-eks,AWS-EKS-Group-prod
+name,replicas,label
+aws-eks-orgs-runners-test,1,aws-eks-test
+aws-eks-orgs-runner-prod,1,aws-eks-prod

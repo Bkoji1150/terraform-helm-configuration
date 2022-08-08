@@ -17,7 +17,7 @@ spec:
       organization: ${var.organization}
       labels:
         - ${each.value.label}
-      group: ${each.value.group}  
+ 
 ---
 YAML
 
@@ -51,4 +51,4 @@ spec:
 YAML
 
   depends_on = [helm_release.github_runner, kubectl_manifest.github_oragnization_runners]
-} 
+}

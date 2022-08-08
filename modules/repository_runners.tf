@@ -17,7 +17,7 @@ spec:
       repository: Kojitechs-101/${each.value.repository_name}
       labels:
         - ${each.value.label} 
----        
+---      
 YAML
   depends_on = [helm_release.github_runner]
 
@@ -32,11 +32,11 @@ resource "kubectl_manifest" "githubrunners_horizontal_scaler" {
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: HorizontalRunnerAutoscaler
 metadata:
-  name: ${each.value.name}
+  name: ${replace(lower(each.value.name), "/", "-")}
   namespace: ${var.arc_namespace}
 spec:
   scaleTargetRef:
-    name: ${each.value.name}
+    name: ${replace(lower(each.value.name), "/", "-")}
   scaleDownDelaySecondsAfterScaleOut: 300
   minReplicas: ${each.value.minreplicas} 
   maxReplicas: ${each.value.maxreplicas} 

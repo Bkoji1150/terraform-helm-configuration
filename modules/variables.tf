@@ -88,7 +88,7 @@ variable "organizations_runners" {
     name     = string
     replicas = number
     label    = string
-    group    = string
+
   }))
   default = []
 }

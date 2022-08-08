@@ -1,11 +1,15 @@
 
 # modules for eks runner configuration 
+locals {
+  state_bucket     = "kojitechs.aws.eks.with.terraform.tf"
+  state_bucket_key = format("env:/%s/path/env", terraform.workspace)
+}
 
 module "helm_configuration" {
   source = "./modules"
 
-  state_bucket     = var.state_bucket
-  state_bucket_key = var.state_bucket_key
+  state_bucket     = local.state_bucket
+  state_bucket_key = local.state_bucket_key
   github_token     = var.github_token
 
   arc_namespace     = var.arc_namespace

@@ -1,3 +1,4 @@
 name,minreplicas,maxreplicas
 aws-eks-orgs-runners-test,2,10
-aws-eks-orgs-runner-prod,2,10
+aws-eks-orgs-runner-prod,3,10
+example-eks-orgs-runner,4,10

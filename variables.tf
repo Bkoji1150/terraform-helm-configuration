@@ -15,13 +15,14 @@ variable "aws_account_id" {
 variable "state_bucket_key" {
   type        = string
   description = "target state bucket to deploy"
-  default     = "env:/shared/path/env"
+  default     = "env:/sbx/path/env"
 }
 
 variable "github_token" {
   description = "This varible contains token use to manage access to create an manage runners at orgs/repository level "
   type        = string
   sensitive   = true
+
 }
 
 variable "cert_chart_version" {

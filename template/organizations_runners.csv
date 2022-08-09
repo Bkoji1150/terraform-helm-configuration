@@ -1,3 +1,4 @@
 name,replicas,label
 aws-eks-orgs-runners-test,1,aws-eks-test
 aws-eks-orgs-runner-prod,1,aws-eks-prod
+example-eks-orgs-runner,1,aws-eks-prod

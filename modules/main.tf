@@ -72,4 +72,3 @@ resource "helm_release" "github_runner" {
     kubernetes_namespace.github_runner
   ]
 }
-

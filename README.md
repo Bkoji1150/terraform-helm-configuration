@@ -14,9 +14,8 @@ aws-eks-orgs-runners-test,    1,           aws-eks-test
 name,                        minreplicas,              maxreplicas
 aws-eks-orgs-runners-test,     2,                        10
 ```
-## This module do create runners at repository level
-
-## create repository runners
+### This module do create runners at repository level
+create repository runners
 
 #### `respository_runners.csv`
 ```csv

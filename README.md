@@ -1,17 +1,15 @@
-# Create Github self runners in aws eks manafe cluster using terraform.
-
-### To create a runner in this project go to the `template` Folder
-
+## Create Github self runners in aws eks manafe cluster using terraform.
+To create a runner in this project go to the `template` Folder
 ## create oraganization runners
 
-### `organizations_runners.csv`
+#### `organizations_runners.csv`
 ```csv
 name,                       replicas,       label
 aws-eks-orgs-runners-test,    1,           aws-eks-test
 ```
 ### horizontally scale up oraganization runners
 
-### `scalling_organizations_runners.csv`
+#### `scalling_organizations_runners.csv`
 ```csv
 name,                        minreplicas,              maxreplicas
 aws-eks-orgs-runners-test,     2,                        10
@@ -20,14 +18,14 @@ aws-eks-orgs-runners-test,     2,                        10
 
 ## create repository runners
 
-### `respository_runners.csv`
+#### `respository_runners.csv`
 ```csv
 name                 ,repository_name                 ,replicas  ,label
 deploy-terraform,       kojitechs-teraform-101,         1,       aws-enhance
 ```
 ### horizontally scale up respository runners
 
-### `scalling_respository_runners.csv`
+#### `scalling_respository_runners.csv`
 ```csv
 name             ,minreplicas ,maxreplicas
 deploy-terraform ,          3 ,         10

@@ -29,7 +29,7 @@ variable "github_token" {
 variable "arc_timeout" {
   description = "Timeout to wait for the Chart to be deployed."
   type        = number
-  default     = 300
+  default     = 500
 }
 
 variable "arc_max_history" {
@@ -65,16 +65,7 @@ variable "arc_name" {
   default     = "actions-runner-controller"
 }
 
-variable "scaling_organization_runners" {
-  type = list(object({
-    name        = string
-    minreplicas = number
-    maxreplicas = number
-  }))
-  default = []
-}
-
-variable "scaling_repository_runners" {
+variable "scaling_runners" {
   type = list(object({
     name        = string
     minreplicas = number
@@ -85,10 +76,8 @@ variable "scaling_repository_runners" {
 
 variable "organizations_runners" {
   type = list(object({
-    name     = string
-    replicas = number
-    label    = string
-
+    name  = string
+    label = string
   }))
   default = []
 }
@@ -97,7 +86,6 @@ variable "repositories_runners" {
   type = list(object({
     name            = string
     repository_name = string
-    replicas        = number
     label           = string
   }))
   default = []

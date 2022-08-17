@@ -42,6 +42,9 @@ resource "helm_release" "cert_manager" {
   depends_on = [
     kubernetes_namespace.github_runner
   ]
+  lifecycle {
+    ignore_changes = [status,name]
+  }
 }
 
 resource "helm_release" "github_runner" {

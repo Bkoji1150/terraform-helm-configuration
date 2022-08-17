@@ -1,3 +1,0 @@
-name,minreplicas,maxreplicas
-deploy-terraform,3,10
-deploy-python,3,10

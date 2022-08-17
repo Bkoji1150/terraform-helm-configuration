@@ -11,13 +11,11 @@ metadata:
   name: ${replace(lower(each.value.name), "/", "-")}
   namespace: ${var.arc_namespace}
 spec:
-  replicas: ${each.value.replicas}
   template:
     spec:
       organization: ${var.organization}
       labels:
         - ${each.value.label}
- 
 ---
 YAML
 
@@ -25,7 +23,7 @@ YAML
 }
 
 resource "kubectl_manifest" "horizontal_runner_autoscaler" {
-  for_each = { for repo in var.scaling_organization_runners :
+  for_each = { for repo in var.scaling_runners :
     repo.name => repo
   }
   yaml_body = <<YAML

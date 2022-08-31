@@ -32,19 +32,22 @@ resource "helm_release" "cert_manager" {
   create_namespace = true
 
   set {
-    name  = "prometheus.enabled"
-    value = "false"
-  }
-  set {
     name  = "installCRDs"
     value = "true"
+  }
+
+  dynamic "set" {
+    for_each = var.additional_set 
+    content {
+      name = set.value.name
+      value = set.value.value
+      type = lookup(set.value, "type", null)
+    }
   }
   depends_on = [
     kubernetes_namespace.github_runner
   ]
-  lifecycle {
-    ignore_changes = [status,name]
-  }
+
 }
 
 resource "helm_release" "github_runner" {

@@ -10,6 +10,11 @@ variable "region" {
   default     = "us-east-1"
 }
 
+variable "additional_set" {
+  description = "(optional) describe your variable"
+  default = []
+}
+
 variable "state_bucket_key" {
   type        = string
   description = "target state bucket to deploy"
@@ -83,6 +88,15 @@ variable "organizations_runners" {
 }
 
 variable "repositories_runners" {
+  type = list(object({
+    name            = string
+    repository_name = string
+    label           = string
+  }))
+  default = []
+}
+
+variable "github_repositore" {
   type = list(object({
     name            = string
     repository_name = string

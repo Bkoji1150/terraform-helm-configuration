@@ -58,7 +58,7 @@ export AWS_ACCESS_KEY_ID=
 export AWS_SECRET_ACCESS_KEY=
 export AWS_SESSION_TOKEN=
 aws sts get-caller-identity
-aws sts assume-role --role-arn arn:aws:iam::674293488770:role/Role_For-S3_Creation --role-session-name kubectl-Session
+aws sts assume-role --role-arn arn:aws:iam::735972722491:role/Role_For-S3_Creation --role-session-name kubectl-Session
 export AWS_ACCESS_KEY_ID=
 export AWS_SECRET_ACCESS_KEY=
 export AWS_SESSION_TOKEN=
@@ -70,4 +70,6 @@ aws sts get-caller-identity
 kubectl get pods --all-namespaces
 kubectl get pods -n actions-runner-system
 kubectl get pods,svc,namespaces,deployments,no,rs,ds --all-namespaces
+kubectl logs -f aws-eks-orgs-runners-test-xvts5-ttcx8 -n actions-runner-system runner
+kubectl logs -f <pod_id> -n actions-runner-system docker
 ```

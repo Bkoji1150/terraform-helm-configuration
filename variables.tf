@@ -12,18 +12,6 @@ variable "github_token" {
   sensitive   = true
 }
 
-variable "cert_chart_version" {
-  type        = string
-  description = "HELM Chart Version for cert-manager"
-  default     = "1.9.1"
-}
-
-variable "arc_chart_version" {
-  type        = string
-  default     = "0.20.2"
-  description = "GitHub Runner Controller Helm chart version."
-}
-
 variable "arc_repo_url" {
   type        = string
   default     = "https://actions-runner-controller.github.io/actions-runner-controller"

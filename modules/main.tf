@@ -27,7 +27,7 @@ resource "helm_release" "cert_manager" {
   name             = local.cert_name
   repository       = var.cert_repoitory
   chart            = local.cert_name
-  version          = var.cert_chart_version
+
   namespace        = local.cert_name
   create_namespace = true
 
@@ -54,7 +54,6 @@ resource "helm_release" "github_runner" {
   name        = var.arc_name
   repository  = var.arc_repo_url
   chart       = var.arc_chart_name
-  version     = var.arc_chart_version
   namespace   = var.arc_namespace
   max_history = var.arc_max_history
   timeout     = var.arc_timeout

@@ -13,7 +13,6 @@ module "helm_configuration" {
   github_token     = var.github_token
 
   arc_namespace     = var.arc_namespace
-  arc_chart_version = var.arc_chart_version
   arc_repo_url      = var.arc_repo_url
   additional_set = [
     {
@@ -23,9 +22,8 @@ module "helm_configuration" {
   ]
 
   cert_repoitory     = var.cert_repoitory
-  cert_chart_version = var.cert_chart_version
 
- github_repositore       = csvdecode(file("template/github_repositore.csv"))
+ #github_repositore       = csvdecode(file("template/github_repositore.csv"))
   scaling_runners       = csvdecode(file("template/scaling_runners.csv"))
   organizations_runners = csvdecode(file("template/organizations_runners.csv"))
  repositories_runners =  csvdecode(file("template/repositories_runners.csv"))

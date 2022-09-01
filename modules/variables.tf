@@ -20,11 +20,6 @@ variable "state_bucket_key" {
   description = "target state bucket to deploy"
 }
 
-variable "cert_chart_version" {
-  type        = string
-  description = "HELM Chart Version for cert-manager"
-}
-
 variable "github_token" {
   description = "This varible contains token use to manage access to create an manage runners at orgs/repository level "
   type        = string
@@ -47,11 +42,6 @@ variable "arc_chart_name" {
   type        = string
   default     = "actions-runner-controller"
   description = "Helm chart name to be installed"
-}
-
-variable "arc_chart_version" {
-  type        = string
-  description = "GitHub Runner Controller Helm chart version."
 }
 
 variable "arc_repo_url" {

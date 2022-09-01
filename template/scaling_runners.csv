@@ -1,5 +1,5 @@
 name,minreplicas,maxreplicas
-aws-eks-orgs-runners-test,2,10
+aws-eks-orgs-runners-test,1,10
 aws-eks-orgs-runner-prod,2,10
 deploy-terraform,3,10
 deploy-python,3,10

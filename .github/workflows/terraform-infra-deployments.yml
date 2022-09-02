@@ -15,7 +15,7 @@ on:
 jobs:
   terraform:
     name: 'build'
-    runs-on: [self-hosted, aws-eks-prod]
+    runs-on: [self-hosted, aws-eks-test]
 
     env:
          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

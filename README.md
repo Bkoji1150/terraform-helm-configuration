@@ -70,7 +70,14 @@ aws sts get-caller-identity
 kubectl get pods --all-namespaces
 kubectl get pods -n actions-runner-system
 kubectl get pods,svc,namespaces,deployments,no,rs,ds --all-namespaces
-kubectl logs -f aws-eks-orgs-runners-test-xvts5-ttcx8 -n actions-runner-system runner
+```
+## connect to runners
+```
+kubectl exec -i  <pod_id>  -n actions-runner-system -it -- /bin/bash
+```
+
+# Get Runners logs
+```bash
+kubectl logs -f <pod_id> -n actions-runner-system runner
 kubectl logs -f <pod_id> -n actions-runner-system docker
-## ghp_bello_nDMNlbR9ldarSKCJMOcORD85LfO7Ld3MCmfwkoji
 ```
